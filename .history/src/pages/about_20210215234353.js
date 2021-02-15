@@ -2,7 +2,7 @@ import React from "react"
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 
-const About = ({ data }) => {
+const AboutPage = ({ data }) => {
     console.log(data)
     return (
         <div>
@@ -10,12 +10,9 @@ const About = ({ data }) => {
                 <h1>About Page</h1>
                 <table>
                     <thead>
-                        <tr>
-                            <th>パス</th>
-                            <th>サイズ</th>
-                            <th>作成時間</th>
-                        </tr>
-                        
+                        <tr>パス</tr>
+                        <tr>サイズ</tr>
+                        <tr>作成時間</tr>
                     </thead>
                     <tbody>
                         {data.allFile.nodes.map(node => (
@@ -47,4 +44,4 @@ export const query = graphql`
   }
 `
 
-export default About
+export default AboutPage
