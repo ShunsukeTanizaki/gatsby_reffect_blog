@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 export default function Home({ data }) {
     return (
@@ -9,10 +9,9 @@ export default function Home({ data }) {
                 <h1>Gatsby Blog Site</h1>
                     {data.allMarkdownRemark.nodes.map(node => (
                         <div key={node.id}>
-                            <Link to={node.fields.slug}>
-                                <h2>{node.frontmatter.title}</h2>
-                            </Link>
+                            <h2>{node.frontmatter.title}</h2>
                             <p>{node.frontmatter.date}</p>
+                            <div dangerouslySetInnerHTML={{ __html: node.html }} />
                         </div>
                     ))}
             </Layout>
@@ -24,10 +23,9 @@ export const query = graphql`
     {
         allMarkdownRemark {
             nodes {
+                id
                 html
-                fields {
-                    slug
-                }
+                timeToRead
                 frontmatter {
                     date
                     title

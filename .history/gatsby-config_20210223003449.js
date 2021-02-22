@@ -17,3 +17,9 @@ module.exports = {
         "gatsby-transformer-remark",
     ],
 }
+
+exports.onCreateNode = ({ node }) => {
+    if (node.internal.type === `MarkdownRemark`) {
+        console.log(node)
+    }
+}

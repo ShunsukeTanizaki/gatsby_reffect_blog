@@ -9,10 +9,9 @@ export default function Home({ data }) {
                 <h1>Gatsby Blog Site</h1>
                     {data.allMarkdownRemark.nodes.map(node => (
                         <div key={node.id}>
-                            <Link to={node.fields.slug}>
-                                <h2>{node.frontmatter.title}</h2>
-                            </Link>
+                            <h2>{node.frontmatter.title}</h2>
                             <p>{node.frontmatter.date}</p>
+                            <div dangerouslySetInnerHTML={{ __html: node.html }} />
                         </div>
                     ))}
             </Layout>
